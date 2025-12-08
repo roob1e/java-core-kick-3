@@ -13,85 +13,128 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LoadingArea {
   private static final Logger log = LogManager.getLogger();
-
-  private static final Lock lock = new ReentrantLock();
-  private static final Condition notFull = lock.newCondition();
-  private static final Condition notEmpty = lock.newCondition();
-
   private static LoadingArea instance;
+  private static final Lock instanceLock = new ReentrantLock();
+
+  private final Lock lock = new ReentrantLock();
+  private final Condition canLoad = lock.newCondition();
+  private final Condition canUnload = lock.newCondition();
 
   private static final int WEIGHT_CAPACITY = 10000;
   private static final double AREA_CAPACITY = 100;
 
-  private final List<Loadable> cars = new ArrayList<>();
+  private final List<Loadable> loadedVehicles = new ArrayList<>();
   private int currentWeight = 0;
   private double currentArea = 0;
-  private boolean finished = false;
+  private boolean loadingFinished = false;
   private int activeLoaders = 0;
+  private boolean unloadingInProgress = false;
 
   private LoadingArea() {}
 
   public static LoadingArea getInstance() {
-    if (instance == null) {
+    instanceLock.lock();
+    try {
+      if (instance == null) {
+        instance = new LoadingArea();
+      }
+      return instance;
+    } finally {
+      instanceLock.unlock();
+    }
+  }
+
+  public void load(List<Loadable> vehicles) {
+    lock.lock();
+    try {
+      activeLoaders++;
+    } finally {
+      lock.unlock();
+    }
+
+    try {
+      for (Loadable vehicle : vehicles) {
+        boolean vehicleLoaded = false;
+
+        while (!vehicleLoaded) {
+          lock.lock();
+          try {
+            while (unloadingInProgress) {
+              canLoad.await();
+            }
+
+            if (currentWeight + vehicle.getWeight() <= WEIGHT_CAPACITY &&
+                    currentArea + vehicle.getArea() <= AREA_CAPACITY) {
+              loadedVehicles.add(vehicle);
+              currentWeight += vehicle.getWeight();
+              currentArea += vehicle.getArea();
+              log.info("Added vehicle {}", vehicle);
+              vehicleLoaded = true;
+
+              boolean isFull = currentWeight >= WEIGHT_CAPACITY ||
+                      currentArea >= AREA_CAPACITY;
+              boolean nextWontFit = currentWeight + vehicle.getWeight() > WEIGHT_CAPACITY ||
+                      currentArea + vehicle.getArea() > AREA_CAPACITY;
+
+              if (isFull || nextWontFit) {
+                canUnload.signal();
+              }
+            } else {
+              canUnload.signal();
+              canLoad.await();
+            }
+          } finally {
+            lock.unlock();
+          }
+
+          if (vehicleLoaded) {
+            TimeUnit.MILLISECONDS.sleep(200);
+          }
+        }
+      }
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+    } finally {
       lock.lock();
       try {
-        if (instance == null) {
-          instance = new LoadingArea();
+        activeLoaders--;
+        if (activeLoaders == 0) {
+          loadingFinished = true;
+          canUnload.signal();
         }
       } finally {
         lock.unlock();
       }
-    }
-    return instance;
-  }
-
-  public void load(List<Loadable> vehicles) {
-    try {
-      lock.lock();
-      activeLoaders++;
-
-      while (!vehicles.isEmpty()) {
-        Loadable next = vehicles.getFirst();
-        while (currentWeight + next.getWeight() > WEIGHT_CAPACITY
-                || currentArea + next.getArea() > AREA_CAPACITY) {
-          notFull.await();
-        }
-
-        vehicles.removeFirst();
-        currentWeight += next.getWeight();
-        currentArea += next.getArea();
-        cars.add(next);
-        log.info("Added vehicle {}", next);
-        TimeUnit.MILLISECONDS.sleep(200);
-        notEmpty.signal();
-      }
-
-      activeLoaders--;
-      if (activeLoaders == 0) {
-        finished = true;
-        notEmpty.signal();
-      }
-
-    } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-    } finally {
-      lock.unlock();
     }
   }
 
   public void unload() {
     try {
       lock.lock();
-      while (!finished || !cars.isEmpty()) {
-        if (!cars.isEmpty()) {
-          Loadable car = cars.removeFirst();
-          currentWeight -= car.getWeight();
-          currentArea -= car.getArea();
-          log.info("Unloaded car {}", car);
-          TimeUnit.MILLISECONDS.sleep(200);
-          notFull.signalAll();
-        } else {
-          notEmpty.await();
+      while (!loadingFinished || !loadedVehicles.isEmpty()) {
+        while (loadedVehicles.isEmpty() && !loadingFinished) {
+          canUnload.await();
+        }
+
+        if (loadedVehicles.isEmpty()) {
+          break;
+        }
+
+        unloadingInProgress = true;
+        List<Loadable> vehiclesToUnload = new ArrayList<>(loadedVehicles);
+        loadedVehicles.clear();
+        currentWeight = 0;
+        currentArea = 0;
+        lock.unlock();
+        try {
+          for (Loadable vehicle : vehiclesToUnload) {
+            log.info("Unloaded car {}", vehicle);
+            TimeUnit.MILLISECONDS.sleep(200);
+          }
+        } finally {
+          lock.lock();
+          unloadingInProgress = false;
+          canLoad.signalAll();
         }
       }
     } catch (InterruptedException e) {

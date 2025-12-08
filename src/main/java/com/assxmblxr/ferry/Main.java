@@ -19,8 +19,10 @@ public class Main {
             .limit(10)
             .collect(Collectors.toList());
 
-    Thread unloaderThread = new Thread(new Unloader(), "Ferry-Unloader");
-    unloaderThread.start();
+    Thread unloaderThread1 = new Thread(new Unloader(), "Ferry-Unloader-1");
+    Thread unloaderThread2 = new Thread(new Unloader(), "Ferry-Unloader-2");
+    unloaderThread1.start();
+    unloaderThread2.start();
 
     Thread loader1 = new Thread(new Loader(loadBatch1), "Ferry-Loader-1");
     Thread loader2 = new Thread(new Loader(loadBatch2), "Ferry-Loader-2");
@@ -33,6 +35,7 @@ public class Main {
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
     }
-    unloaderThread.interrupt();
+    unloaderThread1.interrupt();
+    unloaderThread2.interrupt();
   }
 }
