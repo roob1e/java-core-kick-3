@@ -22,9 +22,8 @@ public class Main {
     Thread unloaderThread = new Thread(new Unloader(), "Ferry-Unloader");
     unloaderThread.start();
 
-    Thread loader1 = new Thread(new Loader(loadBatch1), "Ferry-Loader1");
-    Thread loader2 = new Thread(new Loader(loadBatch2), "Ferry-Loader2");
-
+    Thread loader1 = new Thread(new Loader(loadBatch1), "Ferry-Loader-1");
+    Thread loader2 = new Thread(new Loader(loadBatch2), "Ferry-Loader-2");
     loader1.start();
     loader2.start();
 

@@ -4,7 +4,7 @@ import com.assxmblxr.ferry.entity.Loadable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -22,10 +22,11 @@ public class LoadingArea {
   private static final int WEIGHT_CAPACITY = 10000;
   private static final double AREA_CAPACITY = 100;
 
-  private final List<Loadable> cars = new LinkedList<>();
+  private final List<Loadable> cars = new ArrayList<>();
   private int currentWeight = 0;
   private double currentArea = 0;
   private boolean finished = false;
+  private int activeLoaders = 0;
 
   private LoadingArea() {}
 
@@ -44,15 +45,18 @@ public class LoadingArea {
   }
 
   public void load(List<Loadable> vehicles) {
+    lock.lock();
+    try {
+      activeLoaders++;
+    } finally {
+      lock.unlock();
+    }
+
     try {
       lock.lock();
-
-      // Исправляем условие цикла - проверяем оба списка
-      while (!vehicles.isEmpty() || !cars.isEmpty()) {
-        if (!vehicles.isEmpty() &&
-                currentWeight + vehicles.getFirst().getWeight() <= WEIGHT_CAPACITY &&
-                currentArea + vehicles.getFirst().getArea() <= AREA_CAPACITY) {
-
+      while (!vehicles.isEmpty()) {
+        if (currentWeight + vehicles.getFirst().getWeight() <= WEIGHT_CAPACITY
+                && currentArea + vehicles.getFirst().getArea() <= AREA_CAPACITY) {
           var currentCar = vehicles.getFirst();
           currentWeight += currentCar.getWeight();
           currentArea += currentCar.getArea();
@@ -63,8 +67,16 @@ public class LoadingArea {
           notFull.await();
         }
       }
-      finished = true;
-      notEmpty.signal();
+      lock.lock();
+      try {
+        activeLoaders--;
+        if (activeLoaders == 0) {
+          finished = true;
+          notEmpty.signal();
+        }
+      } finally {
+        lock.unlock();
+      }
     } catch (InterruptedException e) {
       log.error("Interrupted", e);
       Thread.currentThread().interrupt();
@@ -79,11 +91,10 @@ public class LoadingArea {
       while (true) {
         if (!cars.isEmpty()) {
           Loadable currentCar = cars.getFirst();
-          currentWeight -= cars.getFirst().getWeight();
-          currentArea -= cars.getFirst().getArea();
-          cars.remove(cars.getFirst());
+          currentWeight -= currentCar.getWeight();
+          currentArea -= currentCar.getArea();
+          cars.remove(currentCar);
           log.info("Unloaded car {}", currentCar.toString());
-
           if (cars.isEmpty()) {
             notFull.signal();
           }
