@@ -1,0 +1,128 @@
+2025-12-05 14:20:56.159 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry is empty, awaiting new load (hasLoad await).
+2025-12-05 14:23:21.957 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Lada: weight: 4824, area: 97.91034122448906
+2025-12-05 14:23:21.964 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Lada: weight: 2138, area: 13.085043645797583
+2025-12-05 14:23:21.965 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Volvo: weight: 1794, area: 14.345001189186432
+2025-12-05 14:23:21.965 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Mercedes: weight: 6410, area: 53.3011203483305
+2025-12-05 14:23:21.965 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Renault: weight: 2740, area: 14.235209800366844
+2025-12-05 14:23:21.968 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Lada: weight: 1669, area: 13.258958952185402
+2025-12-05 14:23:21.969 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Ford: weight: 1613, area: 13.352088390688452
+2025-12-05 14:23:21.969 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Honda: weight: 1778, area: 14.872901925354068
+2025-12-05 14:23:21.969 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 7872, area: 53.83049819590842
+2025-12-05 14:23:21.969 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 4131, area: 67.48376344107629
+2025-12-05 14:23:21.970 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Fiat: weight: 8909, area: 76.87613613381473
+2025-12-05 14:23:21.970 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Renault: weight: 1429, area: 10.697435428343734
+2025-12-05 14:23:21.971 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Volvo: weight: 1816, area: 10.693085585251229
+2025-12-05 14:23:21.971 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Volkswagen: weight: 4394, area: 30.190988514612183
+2025-12-05 14:23:21.971 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Toyota: weight: 2341, area: 12.263021672684848
+2025-12-05 14:23:21.971 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck BMW: weight: 3508, area: 65.33263824691173
+2025-12-05 14:23:21.971 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck BMW: weight: 8957, area: 39.30628355739793
+2025-12-05 14:23:21.972 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Volkswagen: weight: 1408, area: 13.218490644718885
+2025-12-05 14:23:21.972 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Renault: weight: 2874, area: 14.61941657483829
+2025-12-05 14:23:21.972 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 5195, area: 65.73377982496463
+2025-12-05 14:23:21.974 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry empty. Awaiting load.
+2025-12-05 14:23:21.974 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Lada { weight: 4824, area: 97.91034122448906 }. Total: 4824 kg / 97.91034122448906 m².
+2025-12-05 14:23:21.975 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Car Lada { weight: 2138, area: 13.085043645797583 }
+2025-12-05 14:23:21.975 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Fiat { weight: 8909, area: 76.87613613381473 }
+2025-12-05 14:23:21.976 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - UNLOADED BATCH: 1 vehicles. Ferry is now empty.
+2025-12-05 14:23:21.976 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Lada { weight: 2138, area: 13.085043645797583 }. Total: 2138 kg / 13.085043645797583 m².
+2025-12-05 14:23:21.977 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Volvo { weight: 1794, area: 14.345001189186432 }. Total: 3932 kg / 27.430044834984017 m².
+2025-12-05 14:23:21.977 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Mercedes { weight: 6410, area: 53.3011203483305 }
+2025-12-05 14:23:21.977 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Fiat { weight: 8909, area: 76.87613613381473 }
+2025-12-05 14:23:23.978 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Truck Lada { weight: 4824, area: 97.91034122448906 } unloaded.
+2025-12-05 14:25:55.383 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Honda: weight: 4795, area: 88.58390832235915
+2025-12-05 14:25:55.388 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Toyota: weight: 2046, area: 13.414964464488445
+2025-12-05 14:25:55.388 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Renault: weight: 2819, area: 11.312754819411493
+2025-12-05 14:25:55.388 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Renault: weight: 4457, area: 30.96637201125539
+2025-12-05 14:25:55.388 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Honda: weight: 4064, area: 58.45349352318637
+2025-12-05 14:25:55.388 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Alpina: weight: 1452, area: 11.612471158866008
+2025-12-05 14:25:55.388 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Lada: weight: 9390, area: 35.785730596874316
+2025-12-05 14:25:55.389 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Lada: weight: 5353, area: 87.56768385387409
+2025-12-05 14:25:55.389 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Volvo: weight: 6274, area: 58.967169611253766
+2025-12-05 14:25:55.389 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car BMW: weight: 2617, area: 12.282656810392155
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck BMW: weight: 4401, area: 99.13680877068879
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Lada: weight: 3550, area: 83.31386936925685
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 8316, area: 77.48426667557789
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Alpina: weight: 8606, area: 97.7520438964449
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Volvo: weight: 6968, area: 96.36578460666063
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Fiat: weight: 9719, area: 63.186991603603005
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Renault: weight: 5539, area: 30.558865964296125
+2025-12-05 14:25:55.390 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car BMW: weight: 1894, area: 10.53031942123812
+2025-12-05 14:25:55.391 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Volkswagen: weight: 1194, area: 10.286727012449436
+2025-12-05 14:25:55.391 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Lada: weight: 1690, area: 11.471465468544874
+2025-12-05 14:25:55.393 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry empty. Awaiting load.
+2025-12-05 14:25:55.394 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Honda { weight: 4795, area: 88.58390832235915 }. Total: 4795 kg / 88.58390832235915 m².
+2025-12-05 14:25:55.394 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Car Toyota { weight: 2046, area: 13.414964464488445 }
+2025-12-05 14:25:55.395 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck BMW { weight: 4401, area: 99.13680877068879 }
+2025-12-05 14:25:55.395 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Truck Honda { weight: 4795, area: 88.58390832235915 } unloaded.
+2025-12-05 14:25:55.396 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - UNLOADED BATCH: 1 vehicles. Ferry is now empty.
+2025-12-05 14:25:55.396 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Toyota { weight: 2046, area: 13.414964464488445 }. Total: 2046 kg / 13.414964464488445 m².
+2025-12-05 14:25:55.396 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Renault { weight: 2819, area: 11.312754819411493 }. Total: 4865 kg / 24.727719283899937 m².
+2025-12-05 14:25:55.396 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Renault { weight: 4457, area: 30.96637201125539 }. Total: 9322 kg / 55.69409129515533 m².
+2025-12-05 14:25:55.396 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Honda { weight: 4064, area: 58.45349352318637 }
+2025-12-05 14:25:55.397 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck BMW { weight: 4401, area: 99.13680877068879 }
+2025-12-05 14:29:49.973 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Chevrolet: weight: 6417, area: 69.69483670007781
+2025-12-05 14:29:49.978 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Chevrolet: weight: 5914, area: 90.51473441728137
+2025-12-05 14:29:49.978 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 5234, area: 40.20385723668591
+2025-12-05 14:29:49.978 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Lada: weight: 3547, area: 75.31396870613588
+2025-12-05 14:29:49.978 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Honda: weight: 6603, area: 36.44613119600113
+2025-12-05 14:29:49.978 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Honda: weight: 8429, area: 63.63231122151491
+2025-12-05 14:29:49.979 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Toyota: weight: 3007, area: 11.162361282740685
+2025-12-05 14:29:49.980 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car BMW: weight: 1025, area: 13.265524038268616
+2025-12-05 14:29:49.980 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Fiat: weight: 3358, area: 14.542125714829849
+2025-12-05 14:29:49.980 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Mercedes: weight: 2367, area: 14.424811755243427
+2025-12-05 14:29:49.981 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Toyota: weight: 2832, area: 10.618058387721574
+2025-12-05 14:29:49.981 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Fiat: weight: 8053, area: 54.08719307563538
+2025-12-05 14:29:49.981 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 9485, area: 82.34863918699932
+2025-12-05 14:29:49.981 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Chevrolet: weight: 1485, area: 10.197274192583096
+2025-12-05 14:29:49.981 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Toyota: weight: 7919, area: 39.03742212977006
+2025-12-05 14:29:49.982 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Toyota: weight: 2744, area: 11.929937994000085
+2025-12-05 14:29:49.982 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Mercedes: weight: 1103, area: 10.610960631074624
+2025-12-05 14:29:49.982 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Volkswagen: weight: 5213, area: 67.7480883116517
+2025-12-05 14:29:49.982 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Ford: weight: 9257, area: 59.765843239346566
+2025-12-05 14:29:49.982 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Volvo: weight: 1798, area: 12.752900515320368
+2025-12-05 14:29:49.984 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry empty. Awaiting load.
+2025-12-05 14:29:49.985 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Chevrolet { weight: 6417, area: 69.69483670007781 }. Total: 6417 kg / 69.69483670007781 m².
+2025-12-05 14:29:49.985 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Chevrolet { weight: 5914, area: 90.51473441728137 }
+2025-12-05 14:29:49.986 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Toyota { weight: 2832, area: 10.618058387721574 }. Total: 9249 kg / 80.31289508779939 m².
+2025-12-05 14:29:49.986 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Fiat { weight: 8053, area: 54.08719307563538 }
+2025-12-05 14:29:49.986 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - UNLOADED BATCH: 2 vehicles. Ferry is now empty.
+2025-12-05 14:29:49.987 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Truck Chevrolet { weight: 6417, area: 69.69483670007781 } unloaded.
+2025-12-05 14:29:49.987 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Chevrolet { weight: 5914, area: 90.51473441728137 }. Total: 5914 kg / 90.51473441728137 m².
+2025-12-05 14:29:49.987 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Car Toyota { weight: 2832, area: 10.618058387721574 } unloaded.
+2025-12-05 14:29:49.987 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Toyota { weight: 5234, area: 40.20385723668591 }
+2025-12-05 14:29:49.987 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Fiat { weight: 8053, area: 54.08719307563538 }
+2025-12-05 14:31:54.088 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Renault: weight: 2732, area: 13.669509995531541
+2025-12-05 14:31:54.093 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Alpina: weight: 4974, area: 57.15549497672971
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Mercedes: weight: 1820, area: 10.92006337241163
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Alpina: weight: 5597, area: 53.125794075775985
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Chevrolet: weight: 1390, area: 10.853031805357015
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Ford: weight: 2101, area: 10.815333964184608
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Alpina: weight: 2810, area: 11.372023847577516
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Alpina: weight: 8837, area: 72.91046773320124
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Alpina: weight: 3344, area: 10.377681477322062
+2025-12-05 14:31:54.094 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Volvo: weight: 4907, area: 58.22860358273408
+2025-12-05 14:31:54.095 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Lada: weight: 6853, area: 78.16686125310932
+2025-12-05 14:31:54.095 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Alpina: weight: 9159, area: 87.02724193898644
+2025-12-05 14:31:54.096 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Honda: weight: 2652, area: 13.57557104012308
+2025-12-05 14:31:54.096 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car BMW: weight: 1822, area: 10.83703691386717
+2025-12-05 14:31:54.096 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Alpina: weight: 4162, area: 61.78346745330789
+2025-12-05 14:31:54.096 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car Alpina: weight: 1072, area: 14.225975380001449
+2025-12-05 14:31:54.096 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car BMW: weight: 3090, area: 14.000075288379762
+2025-12-05 14:31:54.096 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Renault: weight: 7830, area: 92.0843335795201
+2025-12-05 14:31:54.097 [main] INFO  com.assxmblxr.ferry.entity.impl.Truck - Initialized Truck Fiat: weight: 8411, area: 69.70582974871834
+2025-12-05 14:31:54.097 [main] INFO  com.assxmblxr.ferry.entity.impl.Car - Initialized Car BMW: weight: 2470, area: 12.325151347858128
+2025-12-05 14:31:54.099 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry empty. Awaiting load.
+2025-12-05 14:31:54.100 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Renault { weight: 2732, area: 13.669509995531541 }. Total: 2732 kg / 13.669509995531541 m².
+2025-12-05 14:31:54.100 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Alpina { weight: 4974, area: 57.15549497672971 }. Total: 7706 kg / 70.82500497226125 m².
+2025-12-05 14:31:54.101 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Mercedes { weight: 1820, area: 10.92006337241163 }. Total: 9526 kg / 81.74506834467289 m².
+2025-12-05 14:31:54.101 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Alpina { weight: 5597, area: 53.125794075775985 }
+2025-12-05 14:31:54.101 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Lada { weight: 6853, area: 78.16686125310932 }
+2025-12-05 14:31:54.102 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - UNLOADED BATCH: 3 vehicles. Ferry is now empty.
+2025-12-05 14:31:54.102 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Car Renault { weight: 2732, area: 13.669509995531541 } unloaded.
+2025-12-05 14:31:54.102 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Truck Alpina { weight: 5597, area: 53.125794075775985 }. Total: 5597 kg / 53.125794075775985 m².
+2025-12-05 14:31:54.102 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Truck Alpina { weight: 4974, area: 57.15549497672971 } unloaded.
+2025-12-05 14:31:54.102 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Chevrolet { weight: 1390, area: 10.853031805357015 }. Total: 6987 kg / 63.978825881133 m².
+2025-12-05 14:31:54.102 [Ferry-Unloader] INFO  com.assxmblxr.ferry.resource.LoadingArea - Vehicle Car Mercedes { weight: 1820, area: 10.92006337241163 } unloaded.
+2025-12-05 14:31:54.102 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - LOADED: Car Ford { weight: 2101, area: 10.815333964184608 }. Total: 9088 kg / 74.79415984531761 m².
+2025-12-05 14:31:54.102 [Ferry-Loader1] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Car Alpina { weight: 2810, area: 11.372023847577516 }
+2025-12-05 14:31:54.103 [Ferry-Loader2] INFO  com.assxmblxr.ferry.resource.LoadingArea - Ferry full. Awaiting space for: Truck Lada { weight: 6853, area: 78.16686125310932 }

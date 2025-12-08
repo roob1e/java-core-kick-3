@@ -1,11 +1,9 @@
 package com.assxmblxr.ferry.entity;
 
 public interface Loadable {
-  public int getWeight();
+  int getWeight();
 
-  public void setWeight(int weight);
+  String getName();
 
-  public String getName();
-
-  public void setName(String name);
+  double getArea();
 }

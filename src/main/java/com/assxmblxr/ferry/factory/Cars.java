@@ -29,18 +29,20 @@ public class Cars {
     CarType type = CarType.values()[RANDOM.nextInt(CarType.values().length)];
     if (type == CarType.CAR) {
       int weight = RANDOM.nextInt(1000, 3500);
-      return new Car(weight, name);
+      double area = RANDOM.nextDouble(10, 15);
+      return new Car(weight, name, area);
     } else {
       int weight = RANDOM.nextInt(3500, 10000);
-      return new Truck(weight, name);
+      double area = RANDOM.nextDouble(30, 100);
+      return new Truck(weight, name, area);
     }
   }
 
-  public static Loadable singleCar(CarType type, int weight, String name) {
+  public static Loadable singleCar(CarType type, int weight, String name, double area) {
     if (type == CarType.CAR) {
-      return new Car(weight, name);
+      return new Car(weight, name, area);
     } else {
-      return new Truck(weight, name);
+      return new Truck(weight, name, area);
     }
   }
 }

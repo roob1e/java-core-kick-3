@@ -1,0 +1,103 @@
+package com.assxmblxr.ferry.resource;
+
+import com.assxmblxr.ferry.entity.Loadable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class LoadingArea {
+  private static final Logger log = LogManager.getLogger();
+
+  private static final Lock lock = new ReentrantLock();
+  private static final Condition notFull = lock.newCondition();
+  private static final Condition notEmpty = lock.newCondition();
+
+  private static LoadingArea instance;
+
+  private static final int WEIGHT_CAPACITY = 10000;
+  private static final double AREA_CAPACITY = 100;
+
+  private final List<Loadable> cars = new LinkedList<>();
+  private int currentWeight = 0;
+  private double currentArea = 0;
+  private boolean finished = false;
+
+  private LoadingArea() {}
+
+  public static LoadingArea getInstance() {
+    if (instance == null) {
+      lock.lock();
+      try {
+        if (instance == null) {
+          instance = new LoadingArea();
+        }
+      } finally {
+        lock.unlock();
+      }
+    }
+    return instance;
+  }
+
+  public void load(List<Loadable> vehicles) {
+    try {
+      lock.lock();
+
+      // Исправляем условие цикла - проверяем оба списка
+      while (!vehicles.isEmpty() || !cars.isEmpty()) {
+        if (!vehicles.isEmpty() &&
+                currentWeight + vehicles.getFirst().getWeight() <= WEIGHT_CAPACITY &&
+                currentArea + vehicles.getFirst().getArea() <= AREA_CAPACITY) {
+
+          var currentCar = vehicles.getFirst();
+          currentWeight += currentCar.getWeight();
+          currentArea += currentCar.getArea();
+          cars.add(vehicles.removeFirst());
+          log.info("Added vehicle {}", currentCar.toString());
+          notEmpty.signal();
+        } else {
+          notFull.await();
+        }
+      }
+      finished = true;
+      notEmpty.signal();
+    } catch (InterruptedException e) {
+      log.error("Interrupted", e);
+      Thread.currentThread().interrupt();
+    } finally {
+      lock.unlock();
+    }
+  }
+
+  public void unload() {
+    try {
+      lock.lock();
+      while (true) {
+        if (!cars.isEmpty()) {
+          Loadable currentCar = cars.getFirst();
+          currentWeight -= cars.getFirst().getWeight();
+          currentArea -= cars.getFirst().getArea();
+          cars.remove(cars.getFirst());
+          log.info("Unloaded car {}", currentCar.toString());
+
+          if (cars.isEmpty()) {
+            notFull.signal();
+          }
+        } else if (finished) {
+          break;
+        } else {
+          notEmpty.await();
+        }
+      }
+    } catch (InterruptedException e) {
+      log.error("Interrupted", e);
+      Thread.currentThread().interrupt();
+    } finally {
+      lock.unlock();
+    }
+  }
+}

@@ -1,17 +1,39 @@
 package com.assxmblxr.ferry;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import com.assxmblxr.ferry.entity.Loadable;
+import com.assxmblxr.ferry.entity.Loader;
+import com.assxmblxr.ferry.entity.Unloader;
+import com.assxmblxr.ferry.factory.Cars;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Main {
   public static void main(String[] args) {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    System.out.printf("Hello and welcome!");
+    List<Loadable> loadBatch1 = Stream.generate(Cars::randomCar)
+            .limit(10)
+            .collect(Collectors.toList());
 
-    for (int i = 1; i <= 5; i++) {
-      //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-      // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-      System.out.println("i = " + i);
+    List<Loadable> loadBatch2 = Stream.generate(Cars::randomCar)
+            .limit(10)
+            .collect(Collectors.toList());
+
+    Thread unloaderThread = new Thread(new Unloader(), "Ferry-Unloader");
+    unloaderThread.start();
+
+    Thread loader1 = new Thread(new Loader(loadBatch1), "Ferry-Loader1");
+    Thread loader2 = new Thread(new Loader(loadBatch2), "Ferry-Loader2");
+
+    loader1.start();
+    loader2.start();
+
+    try {
+      loader1.join();
+      loader2.join();
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
     }
+    unloaderThread.interrupt();
   }
 }
