@@ -37,12 +37,4 @@ public class Cars {
       return new Truck(weight, name, area);
     }
   }
-
-  public static Loadable singleCar(CarType type, int weight, String name, double area) {
-    if (type == CarType.CAR) {
-      return new Car(weight, name, area);
-    } else {
-      return new Truck(weight, name, area);
-    }
-  }
 }
