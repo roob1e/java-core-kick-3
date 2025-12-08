@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -45,40 +46,33 @@ public class LoadingArea {
   }
 
   public void load(List<Loadable> vehicles) {
-    lock.lock();
-    try {
-      activeLoaders++;
-    } finally {
-      lock.unlock();
-    }
-
     try {
       lock.lock();
+      activeLoaders++;
+
       while (!vehicles.isEmpty()) {
-        if (currentWeight + vehicles.getFirst().getWeight() <= WEIGHT_CAPACITY
-                && currentArea + vehicles.getFirst().getArea() <= AREA_CAPACITY) {
-          var currentCar = vehicles.getFirst();
-          currentWeight += currentCar.getWeight();
-          currentArea += currentCar.getArea();
-          cars.add(vehicles.removeFirst());
-          log.info("Added vehicle {}", currentCar.toString());
-          notEmpty.signal();
-        } else {
+        Loadable next = vehicles.getFirst();
+        while (currentWeight + next.getWeight() > WEIGHT_CAPACITY
+                || currentArea + next.getArea() > AREA_CAPACITY) {
           notFull.await();
         }
+
+        vehicles.removeFirst();
+        currentWeight += next.getWeight();
+        currentArea += next.getArea();
+        cars.add(next);
+        log.info("Added vehicle {}", next);
+        TimeUnit.MILLISECONDS.sleep(200);
+        notEmpty.signal();
       }
-      lock.lock();
-      try {
-        activeLoaders--;
-        if (activeLoaders == 0) {
-          finished = true;
-          notEmpty.signal();
-        }
-      } finally {
-        lock.unlock();
+
+      activeLoaders--;
+      if (activeLoaders == 0) {
+        finished = true;
+        notEmpty.signal();
       }
+
     } catch (InterruptedException e) {
-      log.error("Interrupted", e);
       Thread.currentThread().interrupt();
     } finally {
       lock.unlock();
@@ -88,24 +82,19 @@ public class LoadingArea {
   public void unload() {
     try {
       lock.lock();
-      while (true) {
+      while (!finished || !cars.isEmpty()) {
         if (!cars.isEmpty()) {
-          Loadable currentCar = cars.getFirst();
-          currentWeight -= currentCar.getWeight();
-          currentArea -= currentCar.getArea();
-          cars.remove(currentCar);
-          log.info("Unloaded car {}", currentCar.toString());
-          if (cars.isEmpty()) {
-            notFull.signal();
-          }
-        } else if (finished) {
-          break;
+          Loadable car = cars.removeFirst();
+          currentWeight -= car.getWeight();
+          currentArea -= car.getArea();
+          log.info("Unloaded car {}", car);
+          TimeUnit.MILLISECONDS.sleep(200);
+          notFull.signalAll();
         } else {
           notEmpty.await();
         }
       }
     } catch (InterruptedException e) {
-      log.error("Interrupted", e);
       Thread.currentThread().interrupt();
     } finally {
       lock.unlock();
