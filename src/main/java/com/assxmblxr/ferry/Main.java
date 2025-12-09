@@ -1,8 +1,8 @@
 package com.assxmblxr.ferry;
 
 import com.assxmblxr.ferry.entity.Loadable;
-import com.assxmblxr.ferry.entity.Loader;
-import com.assxmblxr.ferry.entity.Unloader;
+import com.assxmblxr.ferry.entity.impl.Loader;
+import com.assxmblxr.ferry.entity.impl.Unloader;
 import com.assxmblxr.ferry.factory.Cars;
 
 import java.util.List;

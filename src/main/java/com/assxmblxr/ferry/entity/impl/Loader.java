@@ -1,5 +1,6 @@
-package com.assxmblxr.ferry.entity;
+package com.assxmblxr.ferry.entity.impl;
 
+import com.assxmblxr.ferry.entity.Loadable;
 import com.assxmblxr.ferry.resource.LoadingArea;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
